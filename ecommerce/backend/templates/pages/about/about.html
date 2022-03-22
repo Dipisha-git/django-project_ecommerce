@@ -1,0 +1,91 @@
+{% extends 'master/master.html' %}
+{% block content %}
+
+
+<!-- Page Content -->
+<div class="page-heading about-heading header-text">
+    <div class="container">
+        <div class="row">
+
+            <div class="best-features about-features">
+                <div class="container">
+                    <div class="row">
+                        {% for data in aboutData %}
+                        <div class="col-md-12">
+
+                            <div class="section-heading">
+                                <h2>Our Background</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="right-image">
+                                <img src="{{ data.content_img.url }}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="left-content">
+                                <h4>{{data.title}}</h4>
+                                <p>{{ data.description|safe }}</p>
+                                <ul class="social-icons">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="team-members">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="section-heading">
+                    <h2>Our Team Members</h2>
+                </div>
+            </div>
+
+            {% for members in memberData %}
+            <div class="col-md-4">
+                <div class="team-member">
+                    <div class="thumb-container">
+                        <img src="{{ members.mem_image.url }}" alt="">
+                        <div class="hover-effect">
+                            <div class="hover-content">
+                                <ul class="social-icons">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="down-content">
+                        <h4>{{ members.name }}</h4>
+                        <span>{{ members.position|upper }}</span>
+                        <p>{{ members.details|safe}}
+                        <p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

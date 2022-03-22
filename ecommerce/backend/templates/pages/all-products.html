@@ -1,0 +1,35 @@
+{% extends 'master/master.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="col-md-12">
+    <div class="filters-content">
+        <div class="row grid">
+            <div class="col-lg-6 col-md-6 all des">
+                <div class="product-item">
+                    <a href="#"><img src="{{ allProduct.image.url }}" alt=""></a>
+                    <div class="down-content">
+                        <a href="#">
+                            <h4>{{ allProduct.title }}</h4>
+                        </a>
+                        <h6>{{ allProduct.price }}</h6>
+                        <p>{{ allProduct.description|safe }}</p>
+                        <ul class="stars">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

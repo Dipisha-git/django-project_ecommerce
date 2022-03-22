@@ -1,0 +1,75 @@
+{% extends 'master/master.html' %}
+{% block content %}
+<!-- Banner Starts Here -->
+<div class="banner header-text">
+    <div class="owl-banner owl-carousel">
+        {% for Category in categoryData %}
+        <div class="banner-item-01">
+            {% for products in Category.products_set.all %}
+            <div class="text-content">
+                <h4>{{ products.title }}</h4>
+                <a href="{% url 'all-products' products.slug %}"><img src="{{ products.image.url }}" alt=""></a>
+            </div>
+
+            {% endfor %}
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+<!-- Banner Ends Here -->
+
+<div class="products">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="filters">
+                    <ul>
+                        <a href="{% url 'product-category' %}">
+                            <li>All Products</li>
+                        </a>
+                        {% for cat in categoryData %}
+                        <a href="{% url 'inside-category' cat.id %}">
+                            <li data-filter=".des">{{ cat.cat_name|upper }}</li>
+                        </a>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="filters-content">
+                    <div class="row grid">
+                        {% for products in insidecatData %}
+                        <div class="col-lg-6 col-md-6 all des">
+                            <div class="product-item">
+                                <a href="{% url 'all-products' products.slug %}" target="_blank"><img
+                                        src="{{ products.image.url }}" alt=""></a>
+                                <div class="down-content">
+                                    <a href="{% url 'all-products' products.slug %}">
+                                        <h4>{{ products.title|upper }}</h4>
+                                    </a>
+                                    <h6>Rs.{{ products.price }}</h6>
+                                    <p>{{ products.description|safe}}</p>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
